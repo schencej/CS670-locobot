@@ -37,7 +37,7 @@ def _update_robot_view(bot,obstacles,target,fov,nchannels,bounds,n_obstacles):
     view = [ 0 for x in range(nchannels+1) ]
     view_dists = [np.inf for x in range(nchannels+1) ]
 
-    for i in prange(0,len(view_angles)):
+    for i in range(0,len(view_angles)):
         angle = view_angles[i]
         direction = (np.cos(angle),np.sin(angle))
         for obj in obstacles: 
