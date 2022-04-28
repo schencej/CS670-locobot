@@ -11,7 +11,6 @@ from gym.utils import seeding
 from tf_agents.environments import py_environment
 from tf_agents.trajectories import time_step as ts
 from tf_agents.specs import array_spec
-from numba import njit, prange
 from EnvGenerator import RoomGenerator
 
 from Test_Environment import TargetSearchEnv
