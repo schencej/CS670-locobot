@@ -3,8 +3,10 @@
 ## Setup
 
 Included in this folder are two files used for setup:
-setup.sh and packages.txt. To setup a system for use, simply
-running setup.sh with:
+setup.sh and packages.txt. packages.txt includes a list of
+all Python packages needed to run the code. Changing this
+file may cause the code to be unable to run. To setup a
+system for use, simply running setup.sh with:
 
 ```
 chmod 0700 ./setup.sh
