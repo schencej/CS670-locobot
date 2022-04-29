@@ -4,7 +4,14 @@
 
 Included in this folder are two files used for setup:
 setup.sh and packages.txt. To setup a system for use, simply
-running setup.sh is sufficient. It will require the input of
+running setup.sh with:
+
+```
+chmod 0700 ./setup.sh
+./setup.sh
+```
+
+is sufficient. It will require the input of
 a sudo password, and pressing the enter key a few times to
 configure everything. It is tested to work on an Ubuntu
 18.04.5 system and will configure the system and create a
@@ -21,6 +28,7 @@ The following two commands should be ran:
 
 ```
 source venv/bin/activate
+chmod 0700 ./rl_training.py
 ./rl_training.py
 ```
 
