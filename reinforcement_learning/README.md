@@ -19,8 +19,10 @@ defaults to 3.6) to Python3.9. Please be wary of this.
 To run the training code, the procedure is straightforward.
 The following two commands should be ran:
 
+```
 source venv/bin/activate
 ./rl_training.py
+```
 
 This will activate the Python3.9 virtual environment, then
 run the training code to build the model. The code will save
