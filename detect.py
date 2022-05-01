@@ -18,7 +18,8 @@ import os
 import statistics
 import sys
 
-goal_key = {'chair': 56, 'pen':39, 'bottle':39}
+goal_key = {'chair': (56, "large"), 'pen':(39, "small"), 'bottle':(39, "small"), 'person':(0, "large"), 'cup':(41, "small"), 'bowl':(45, "small"), 
+'bench':(13, "large"), 'refri':(72, "large")}
 
 
 
@@ -196,7 +197,7 @@ if __name__ == '__main__':
 
 
     goal = sys.argv[1].lower()
-    ok = goal_key[goal]
+    ok, o_size = goal_key[goal]
 
 
     detector()
