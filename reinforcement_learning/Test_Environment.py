@@ -191,31 +191,24 @@ class TargetSearchEnv(py_environment.PyEnvironment):
         target_center[1] = self._state[2][0][1]+(0.5*self._state[2][0][3])
         reward = 0
         curr_dist = np.linalg.norm(bot[[0,1]]-target_center)
-        reward = -0.5
-        if self.prev_dist > curr_dist:
-            reward = -0.2
-        obs_r = 0.1 
-        for obs in self._state[1]: 
+
+        reward = -0.7
+        obs_r = 0.1
+        for obs in self._state[1]:
             if bot[0] > obs[0]-obs_r and bot[1] > obs[1]-obs_r:
                 if bot[0] < obs[0]+obs[2]+obs_r and bot[1] < obs[1]+obs[3]+obs_r:
                     reward = -1.0
+        if bot[0] < self.bounds[0]+obs_r or bot[1] < self.bounds[1]+obs_r or bot[0] > self.bounds[2]-obs_r or bot[1] > self.bounds[3]-obs_r:
+                reward = -1.0
         if self.prev_dist < curr_dist:
             reward = -1.5
+        if self.prev_dist > curr_dist:
+            reward = -0.2
         if bot[0] < (self._state[2][0][0]+self._state[2][0][2]) and bot[0] > self._state[2][0][0] and bot[1] < (self._state[2][0][1]+self._state[2][0][3]) and bot[1] > self._state[2][0][1]:
-            reward = 2
-        discount = 0.9
-        if bot[0] < self.bounds[0]:
-            self._state[0][0] = self.bounds[0]
-        if bot[1] < self.bounds[1]:
-            self._state[0][1] = self.bounds[1]
-        if bot[0] > self.bounds[2]:
-            self._state[0][0] = self.bounds[2]
-        if bot[1] > self.bounds[3]:
-            self._state[0][0] = self.bounds[3]
-        self._eprew = self._eprew + reward
-        if self._nSteps > 1000:
             self._episode_ended = True
-        
+            reward = 0.0
+        discount = 0.99
+
         self.prev_dist = curr_dist
         obs=_update_robot_view(self._state[0],np.array(self._state[1]),np.array(self._state[2]),self._fov,self._n_view_channels,self.bounds,len(self._state[1]))
         obs = np.concatenate([obs,target_center,bot[[0,1,2]]])
