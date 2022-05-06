@@ -38,3 +38,9 @@ This will activate the Python3.9 virtual environment, then
 run the training code to build the model. The code will save
 the trained policy and create an evaluation video for
 viewing the model's performance.
+
+## Controlling the robot
+
+To run a model that controls the robot through ROS, use the
+`robot_controller.py` script. Specify the appropriate topics and the location of
+the policy you want to use at the top of the script prior to running.
